@@ -1,0 +1,8 @@
+Utiliser l'algorithme rsa, le tester et voir comment ca fonctionne
+Retirer les chiffres pour décoder le texte 7
+Implémenter Vigenere pour qu'il fonctionne avec la clé d'abord et avec une attaque statistique
+
+Rappels:
+Txt 10 et 11 = Vigenere
+Txt 6 = RSA (nombres premiers)
+Txt 7 = Retirer les nombres des lettres
