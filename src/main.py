@@ -82,15 +82,10 @@ try:
                 print("\nVous avez choisi le décodage par Vigenere")
                 fichier = open("../a_analyser/"+nom_fichier,'r')
                 contenu = fichier.read()
-                contenu = contenu.upper()
                 print(contenu)
                 cle = raw_input("Donnez la cle du message codé : ")
-                cle_liste = []
-                for lettre in cle:
-                    cle_liste.append(ord(lettre))
-                print cle_liste
-                mot_decode = functions_vigenere.decode_vigenere_bis(contenu, cle_liste)
-                print("\n"+mot_decode)
+                mot_decode = functions_vigenere.decode_vigenere_perso(contenu, cle)
+                print("Voici le message décodé : \n"+mot_decode)
                 fichier.close()
 
             if reponse == "3":

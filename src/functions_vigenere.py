@@ -21,3 +21,65 @@ def vigenere_bis(mot,cle):
 
 def decode_vigenere_bis(mot,cle):
     return vigenere_bis(mot,[-n for n in cle])
+
+def decode_vigenere_perso(mot, cle): #cle est une string
+    # listes
+    mot_liste = []
+    cle_liste = []
+    lettre_decode_liste = []
+    # pré-traitement
+    mot = mot.replace(" ","")
+    mot = mot.replace("é","e")
+    mot = mot.replace("è","e")
+    mot = mot.replace("ê","e")
+    mot = mot.replace("à","a")
+    mot = mot.replace("'","")
+    mot = mot.replace(";","")
+    mot = mot.replace(".","")
+    mot = mot.replace(",","")
+    mot = mot.replace("?","")
+    mot = mot.replace("!","")
+    mot = mot.replace(":","")
+    mot = mot.replace("/","")
+    mot = mot.replace("\\","")
+    mot = mot.strip()
+    mot = mot.upper()
+    cle = cle.upper()
+    # alphabet
+    alphabet = {}
+    # itérateurs
+    i = 0;
+    j = 0;
+    rang_liste = 0
+    # autres
+    mot_decode = ""
+    id_lettre = 65
+
+    while i < 26:
+        alphabet[i] = chr(id_lettre)
+        i = i+1;
+        id_lettre = id_lettre+1
+
+    for lettre in mot:
+        mot_liste.append(ord(lettre))
+
+    for lettre_cle in cle:
+        cle_liste.append(ord(lettre_cle))
+
+    for lettre_cour in mot_liste:
+        if((lettre_cour - cle_liste[rang_liste]) >= 0):
+            lettre_decode = lettre_cour - cle_liste[rang_liste]
+            lettre_decode = alphabet[lettre_decode]
+            lettre_decode_liste.append(lettre_decode)
+        else:
+            lettre_decode = lettre_cour - cle_liste[rang_liste] + 26
+            lettre_decode = alphabet[lettre_decode]
+            lettre_decode_liste.append(lettre_decode)
+
+        if rang_liste == len(cle_liste) - 1:
+            rang_liste = 0
+        else :
+            rang_liste = rang_liste + 1
+
+    mot_decode=mot_decode.join(lettre_decode_liste)
+    return mot_decode
